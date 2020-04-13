@@ -17,9 +17,14 @@ class RestaurantTableViewController: UITableViewController {
 
     var restaurantTypes = ["Coffee & Tea Shop", "Cafe", "Tea House", "Austrian / Causual Drink", "French", "Bakery", "Bakery", "Chocolate", "Cafe", "American / Seafood", "American", "American", "Breakfast & Brunch", "Coffee & Tea", "Coffee & Tea", "Latin American", "Spanish", "Spanish", "Spanish", "British", "Thai"]
     
+//    var restaurantIsVisited = Array(repeating: false, count: 21)
+    
+    var restaurantIsVisited = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.cellLayoutMarginsFollowReadableWidth = true //for displaying on larger screens
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -50,10 +55,74 @@ class RestaurantTableViewController: UITableViewController {
         cell.locationLabel.text = restaurantLocations[indexPath.row]
         cell.typeLabel.text = restaurantTypes[indexPath.row]
 
+//        if restaurantIsVisited[indexPath.row] {
+//            cell.accessoryType = .checkmark
+//        } else {
+//            cell.accessoryType = .none
+//        }
+        cell.accessoryType = restaurantIsVisited[indexPath.row] ? .checkmark : .none
+        
         return cell
     }
 
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+        // Create an option menu as an action sheet
+        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
+
+        // Add actions to the menu
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        optionMenu.addAction(cancelAction)
+        
+        // Add Call action
+        let callActionHandler = { (action:UIAlertAction!) -> Void in
+            let alertMessage = UIAlertController(title: "Service Unavailable", message: "Sorry, the call feature is not available yet. Please retry later.", preferredStyle: .alert)
+            alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alertMessage, animated: true, completion: nil)
+        }
+
+        let callAction = UIAlertAction(title: "Call " + "123-000-\(indexPath.row)", style: .default, handler: callActionHandler)
+        optionMenu.addAction(callAction)
+        
+        
+        // Check-in action
+        
+        let checkInAction = UIAlertAction(title: self.restaurantIsVisited[indexPath.row] ? "Undo Check in" : "Check in", style: .default, handler: { (action:UIAlertAction!) -> Void in
+            let cell = tableView.cellForRow(at: indexPath)
+            cell?.accessoryType = self.restaurantIsVisited[indexPath.row] ? .none : .checkmark
+            self.restaurantIsVisited[indexPath.row] = self.restaurantIsVisited[indexPath.row] ? false : true
+            
+        })
+        
+        
+//        let checkInAction = UIAlertAction(title: "Check in", style: .default, handler: {
+//            (action:UIAlertAction!) -> Void in
+//            let cell = tableView.cellForRow(at: indexPath)
+//            cell?.accessoryType = .checkmark
+//            self.restaurantIsVisited[indexPath.row] = true
+//        })
+        
+        optionMenu.addAction(checkInAction)
+        
+        
+        if let popoverController = optionMenu.popoverPresentationController {
+            if let cell = tableView.cellForRow(at: indexPath) {
+                popoverController.sourceView = cell
+                popoverController.sourceRect = cell.bounds
+            }
+        }
+        
+        
+        // Display the menu
+        present(optionMenu, animated: true, completion: nil)
+        
+        
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
