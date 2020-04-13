@@ -60,7 +60,11 @@ class RestaurantTableViewController: UITableViewController {
 //        } else {
 //            cell.accessoryType = .none
 //        }
-        cell.accessoryType = restaurantIsVisited[indexPath.row] ? .checkmark : .none
+        
+//        cell.accessoryType = restaurantIsVisited[indexPath.row] ? .checkmark : .none
+        
+        // Solution to exercise 2
+        cell.heartImageView.isHidden = !self.restaurantIsVisited[indexPath.row]
         
         return cell
     }
@@ -89,8 +93,9 @@ class RestaurantTableViewController: UITableViewController {
         // Check-in action
         
         let checkInAction = UIAlertAction(title: self.restaurantIsVisited[indexPath.row] ? "Undo Check in" : "Check in", style: .default, handler: { (action:UIAlertAction!) -> Void in
-            let cell = tableView.cellForRow(at: indexPath)
-            cell?.accessoryType = self.restaurantIsVisited[indexPath.row] ? .none : .checkmark
+            let cell = tableView.cellForRow(at: indexPath) as? RestaurantTableViewCell
+//            cell?.accessoryType = self.restaurantIsVisited[indexPath.row] ? .none : .checkmark
+            cell?.heartImageView.isHidden = self.restaurantIsVisited[indexPath.row]
             self.restaurantIsVisited[indexPath.row] = self.restaurantIsVisited[indexPath.row] ? false : true
             
         })
