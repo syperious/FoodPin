@@ -24,6 +24,9 @@ class RestaurantTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //for displaying the large title bar at top
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
         tableView.cellLayoutMarginsFollowReadableWidth = true //for displaying on larger screens
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
