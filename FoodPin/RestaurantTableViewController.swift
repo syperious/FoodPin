@@ -136,18 +136,99 @@ class RestaurantTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+    
+    // Delete rows by implementding default swipe left fucntions. OUTDATED
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            // Delete the row from the data source
+//            restaurantNames.remove(at: indexPath.row)
+//            restaurantLocations.remove(at: indexPath.row)
+//            restaurantTypes.remove(at: indexPath.row)
+//            restaurantIsVisited.remove(at: indexPath.row)
+//        }
+////        tableView.reloadData()
+//        tableView.deleteRows(at: [indexPath], with: .fade)
+//
+//        print("Total item: \(restaurantNames.count)")
+//        for name in restaurantNames {
+//            print(name)
+//        }
+//    }
+    
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
+            self.restaurantNames.remove(at: indexPath.row)
+            self.restaurantLocations.remove(at: indexPath.row)
+            self.restaurantTypes.remove(at: indexPath.row)
+            self.restaurantIsVisited.remove(at: indexPath.row)
+//            self.restaurantImages.remove(at: indexPath.row)
 
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+
+            // Call completion handler to dismiss the action button
+            completionHandler(true)
+        }
+
+        let shareAction = UIContextualAction(style: .normal, title: "Share") { (action, sourceView, completionHandler) in
+            let defaultText = "Just checking in at " + self.restaurantNames[indexPath.row]
+//            let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+            let activityController: UIActivityViewController
+            if let imageToShare = UIImage(named: self.restaurantNames[indexPath.row]) {
+                activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
+            } else  {
+                activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
+            }
+            
+            
+            if let popoverController = activityController.popoverPresentationController {
+                if let cell = tableView.cellForRow(at: indexPath) {
+                    popoverController.sourceView = cell
+                    popoverController.sourceRect = cell.bounds
+                }
+            }
+            
+            self.present(activityController, animated: true, completion: nil)
+            completionHandler(true)
+
+        }
+
+        
+        deleteAction.backgroundColor = UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0)
+        deleteAction.image = UIImage(systemName: "trash")
+
+        shareAction.backgroundColor = UIColor(red: 254.0/255.0, green: 149.0/255.0, blue: 38.0/255.0, alpha: 1.0)
+        shareAction.image = UIImage(systemName: "square.and.arrow.up")
+        
+        
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction, shareAction])
+
+        return swipeConfiguration
+    }
+
+    
+    
+    //right swipe check in function
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let checkInAction = UIContextualAction(style: .normal, title: self.restaurantIsVisited[indexPath.row] ? "Undo Check in" : "Check in") { (action, sourceView, completionHandler) in
+            let cell = tableView.cellForRow(at: indexPath) as? RestaurantTableViewCell
+//            cell?.accessoryType = self.restaurantIsVisited[indexPath.row] ? .none : .checkmark
+            cell?.heartImageView.isHidden = self.restaurantIsVisited[indexPath.row]
+            self.restaurantIsVisited[indexPath.row] = self.restaurantIsVisited[indexPath.row] ? false : true
+             completionHandler(true)
+        }
+        
+        checkInAction.backgroundColor = UIColor(red: 10.0/255.0, green: 231.0/255.0, blue: 30.0/255.0, alpha: 1.0)
+        checkInAction.image = self.restaurantIsVisited[indexPath.row] ? UIImage(systemName: "arrow.uturn.left") : UIImage(systemName: "checkmark")
+        
+        
+        let rightswipeConfiguration = UISwipeActionsConfiguration(actions: [checkInAction])
+
+        return rightswipeConfiguration
+    }
+    
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
