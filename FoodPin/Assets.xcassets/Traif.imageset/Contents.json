@@ -1,23 +1,23 @@
 {
   "images" : [
     {
-      "filename" : "Traif.jpg",
       "idiom" : "universal",
+      "filename" : "traif.jpg",
       "scale" : "1x"
     },
     {
-      "filename" : "Traif@2x.jpg",
       "idiom" : "universal",
+      "filename" : "traif@2x.jpg",
       "scale" : "2x"
     },
     {
-      "filename" : "Traif@3x.jpg",
       "idiom" : "universal",
+      "filename" : "traif@3x.jpg",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   }
 }

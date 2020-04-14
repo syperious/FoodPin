@@ -16,10 +16,7 @@ class RestaurantDetailViewController: UIViewController {
     @IBOutlet var restaurantLocationLabel: UILabel!
     @IBOutlet var restaurantTypeLabel: UILabel!
     
-    var restaurantImageName = ""
-    var restaurantNameName = ""
-    var restaurantTypeName = ""
-    var restaurantLocationName = ""
+    var restaurant = Restaurant()
         
     
     override func viewDidLoad() {
@@ -28,14 +25,12 @@ class RestaurantDetailViewController: UIViewController {
         // OPTIONAL disable large title for all detail pages
         navigationItem.largeTitleDisplayMode = .never
         
-        restaurantImageView.image = UIImage(named: restaurantImageName)
-        restaurantNameLabel.text = restaurantNameName
-        restaurantLocationLabel.text = restaurantLocationName
-        restaurantTypeLabel.text = restaurantTypeName
+        restaurantImageView.image = UIImage(named: restaurant.image)
+        restaurantNameLabel.text = restaurant.name
+        restaurantLocationLabel.text = restaurant.location
+        restaurantTypeLabel.text = restaurant.type
 
     }
-
-    
 
     /*
     // MARK: - Navigation

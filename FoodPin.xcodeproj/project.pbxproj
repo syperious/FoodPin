@@ -15,6 +15,7 @@
 		B84BDB422443A42C0006330F /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84BDB412443A42C0006330F /* RestaurantTableViewController.swift */; };
 		B84BDB442443ACCB0006330F /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84BDB432443ACCB0006330F /* RestaurantTableViewCell.swift */; };
 		B84BDB46244567A10006330F /* RestaurantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84BDB45244567A10006330F /* RestaurantDetailViewController.swift */; };
+		B84BDB4824459D010006330F /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84BDB4724459D010006330F /* Restaurant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B84BDB412443A42C0006330F /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
 		B84BDB432443ACCB0006330F /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		B84BDB45244567A10006330F /* RestaurantDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailViewController.swift; sourceTree = "<group>"; };
+		B84BDB4724459D010006330F /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				B84BDB2D2443A32A0006330F /* AppDelegate.swift */,
 				B84BDB2F2443A32A0006330F /* SceneDelegate.swift */,
 				B84BDB332443A32A0006330F /* Main.storyboard */,
+				B84BDB4724459D010006330F /* Restaurant.swift */,
 				B84BDB362443A32B0006330F /* Assets.xcassets */,
 				B84BDB382443A32B0006330F /* LaunchScreen.storyboard */,
 				B84BDB3B2443A32B0006330F /* Info.plist */,
@@ -146,6 +149,7 @@
 			files = (
 				B84BDB442443ACCB0006330F /* RestaurantTableViewCell.swift in Sources */,
 				B84BDB2E2443A32A0006330F /* AppDelegate.swift in Sources */,
+				B84BDB4824459D010006330F /* Restaurant.swift in Sources */,
 				B84BDB46244567A10006330F /* RestaurantDetailViewController.swift in Sources */,
 				B84BDB302443A32A0006330F /* SceneDelegate.swift in Sources */,
 				B84BDB422443A42C0006330F /* RestaurantTableViewController.swift in Sources */,

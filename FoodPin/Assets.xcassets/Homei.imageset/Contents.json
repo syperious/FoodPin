@@ -1,23 +1,23 @@
 {
   "images" : [
     {
-      "filename" : "Homei.jpg",
       "idiom" : "universal",
+      "filename" : "homei.jpg",
       "scale" : "1x"
     },
     {
-      "filename" : "Homei@2x.jpg",
       "idiom" : "universal",
+      "filename" : "homei@2x.jpg",
       "scale" : "2x"
     },
     {
-      "filename" : "Homei@3x.jpg",
       "idiom" : "universal",
+      "filename" : "homei@3x.jpg",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   }
 }
