@@ -3,7 +3,6 @@
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -162,23 +161,22 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
-                                <constraint firstItem="aSO-2W-jCJ" firstAttribute="top" secondItem="Wrd-Pf-hf5" secondAttribute="top" id="32F-V6-TSI"/>
-                                <constraint firstItem="aSO-2W-jCJ" firstAttribute="leading" secondItem="Wrd-Pf-hf5" secondAttribute="leading" id="7k1-UR-5CY"/>
-                                <constraint firstItem="Wrd-Pf-hf5" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GYt-xF-Hep" secondAttribute="trailing" constant="50" id="B11-y4-lwZ"/>
-                                <constraint firstItem="mxK-jZ-K9c" firstAttribute="top" secondItem="Wrd-Pf-hf5" secondAttribute="top" id="HgT-TZ-F2b"/>
+                                <constraint firstItem="aSO-2W-jCJ" firstAttribute="top" secondItem="IqR-HW-lh3" secondAttribute="top" id="32F-V6-TSI"/>
+                                <constraint firstItem="aSO-2W-jCJ" firstAttribute="leading" secondItem="IqR-HW-lh3" secondAttribute="leading" id="7k1-UR-5CY"/>
+                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GYt-xF-Hep" secondAttribute="trailing" constant="50" id="B11-y4-lwZ"/>
+                                <constraint firstItem="mxK-jZ-K9c" firstAttribute="top" secondItem="IqR-HW-lh3" secondAttribute="top" id="HgT-TZ-F2b"/>
                                 <constraint firstItem="GId-Kt-O6p" firstAttribute="centerY" secondItem="otp-49-0at" secondAttribute="centerY" id="K6X-lp-Ugx"/>
-                                <constraint firstItem="aSO-2W-jCJ" firstAttribute="bottom" secondItem="Wrd-Pf-hf5" secondAttribute="bottom" id="Rns-ao-Scx"/>
+                                <constraint firstItem="aSO-2W-jCJ" firstAttribute="bottom" secondItem="IqR-HW-lh3" secondAttribute="bottom" id="Rns-ao-Scx"/>
                                 <constraint firstItem="GYt-xF-Hep" firstAttribute="leading" secondItem="otp-49-0at" secondAttribute="leading" id="T3c-Fn-2az"/>
-                                <constraint firstItem="mxK-jZ-K9c" firstAttribute="bottom" secondItem="Wrd-Pf-hf5" secondAttribute="bottom" id="V08-d5-f6N"/>
+                                <constraint firstItem="mxK-jZ-K9c" firstAttribute="bottom" secondItem="IqR-HW-lh3" secondAttribute="bottom" id="V08-d5-f6N"/>
                                 <constraint firstItem="otp-49-0at" firstAttribute="top" secondItem="GYt-xF-Hep" secondAttribute="bottom" constant="3" id="aa4-NC-Q3g"/>
-                                <constraint firstItem="mxK-jZ-K9c" firstAttribute="trailing" secondItem="Wrd-Pf-hf5" secondAttribute="trailing" id="b1x-dA-m6F"/>
-                                <constraint firstItem="aSO-2W-jCJ" firstAttribute="trailing" secondItem="Wrd-Pf-hf5" secondAttribute="trailing" id="bPe-dO-LfU"/>
+                                <constraint firstItem="mxK-jZ-K9c" firstAttribute="trailing" secondItem="IqR-HW-lh3" secondAttribute="trailing" id="b1x-dA-m6F"/>
+                                <constraint firstItem="aSO-2W-jCJ" firstAttribute="trailing" secondItem="IqR-HW-lh3" secondAttribute="trailing" id="bPe-dO-LfU"/>
                                 <constraint firstItem="GId-Kt-O6p" firstAttribute="leading" secondItem="otp-49-0at" secondAttribute="trailing" constant="14" id="jsC-Sc-zGX"/>
-                                <constraint firstItem="otp-49-0at" firstAttribute="leading" secondItem="Wrd-Pf-hf5" secondAttribute="leading" constant="14" id="kxZ-v5-xFF"/>
-                                <constraint firstItem="mxK-jZ-K9c" firstAttribute="leading" secondItem="Wrd-Pf-hf5" secondAttribute="leading" id="l8q-s2-5Sr"/>
-                                <constraint firstItem="Wrd-Pf-hf5" firstAttribute="bottom" secondItem="otp-49-0at" secondAttribute="bottom" constant="8" id="v7v-bh-mjF"/>
+                                <constraint firstItem="otp-49-0at" firstAttribute="leading" secondItem="IqR-HW-lh3" secondAttribute="leading" constant="14" id="kxZ-v5-xFF"/>
+                                <constraint firstItem="mxK-jZ-K9c" firstAttribute="leading" secondItem="IqR-HW-lh3" secondAttribute="leading" id="l8q-s2-5Sr"/>
+                                <constraint firstAttribute="bottom" secondItem="otp-49-0at" secondAttribute="bottom" constant="8" id="v7v-bh-mjF"/>
                             </constraints>
-                            <viewLayoutGuide key="safeArea" id="Wrd-Pf-hf5"/>
                             <connections>
                                 <outlet property="headerImageView" destination="mxK-jZ-K9c" id="NPF-JA-VTx"/>
                                 <outlet property="heartImageView" destination="GId-Kt-O6p" id="HwU-e6-76O"/>

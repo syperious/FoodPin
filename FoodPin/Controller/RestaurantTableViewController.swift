@@ -46,6 +46,17 @@ class RestaurantTableViewController: UITableViewController {
         // Set to use the large title of the navigation bar
         navigationController?.navigationBar.prefersLargeTitles = true
         
+        // Set backgroundIOmage and shadowImage to blank image to make the navigation bar transparent
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        // Specify text color and font in the text attributes dictionary
+        if let customFont = UIFont(name: "Rubik-Medium", size: 40.0) {
+            navigationController?.navigationBar.largeTitleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0), NSAttributedString.Key.font: customFont ]
+        }
+        
+        
+        
+        
     }
 
     // MARK: - Table view data source

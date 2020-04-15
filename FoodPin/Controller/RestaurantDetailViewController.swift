@@ -32,12 +32,26 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         tableView.separatorStyle = .none
 
         navigationItem.largeTitleDisplayMode = .never
+        
+        // Set nagivationBar transparent
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        //change naviBar item colors to white
+        navigationController?.navigationBar.tintColor = .white
+
+        // By default this value is .always, by setting to never we allow the conntent area to overlap with naviBar
+        tableView.contentInsetAdjustmentBehavior = .never
+        
 
         // Configure header view
         headerView.nameLabel.text = restaurant.name
         headerView.typeLabel.text = restaurant.type
         headerView.headerImageView.image = UIImage(named: restaurant.image)
         headerView.heartImageView.isHidden = (restaurant.isVisited) ? false : true
+        
+        
+        
+        
     }
 
     //1 body of text
