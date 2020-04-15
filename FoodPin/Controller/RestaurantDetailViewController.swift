@@ -11,10 +11,13 @@ import UIKit
 class RestaurantDetailViewController: UIViewController {
 
     
-    @IBOutlet var restaurantImageView: UIImageView!
-    @IBOutlet var restaurantNameLabel: UILabel!
-    @IBOutlet var restaurantLocationLabel: UILabel!
-    @IBOutlet var restaurantTypeLabel: UILabel!
+//    @IBOutlet var restaurantImageView: UIImageView!
+//    @IBOutlet var restaurantNameLabel: UILabel!
+//    @IBOutlet var restaurantLocationLabel: UILabel!
+//    @IBOutlet var restaurantTypeLabel: UILabel!
+    
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var headerView: RestaurantDetailHeaderView!
     
     var restaurant = Restaurant()
         
@@ -22,14 +25,13 @@ class RestaurantDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // OPTIONAL disable large title for all detail pages
         navigationItem.largeTitleDisplayMode = .never
-        
-        restaurantImageView.image = UIImage(named: restaurant.image)
-        restaurantNameLabel.text = restaurant.name
-        restaurantLocationLabel.text = restaurant.location
-        restaurantTypeLabel.text = restaurant.type
 
+        // Configure header view
+        headerView.nameLabel.text = restaurant.name
+        headerView.typeLabel.text = restaurant.type
+        headerView.headerImageView.image = UIImage(named: restaurant.image)
+        headerView.heartImageView.isHidden = (restaurant.isVisited) ? false : true
     }
 
     /*
