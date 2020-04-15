@@ -128,6 +128,10 @@
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mxK-jZ-K9c" userLabel="Header Image View">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
                                 </imageView>
+                                <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSO-2W-jCJ" userLabel="Dim View">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYt-xF-Hep" userLabel="Name Label">
                                     <rect key="frame" x="14" y="277" width="91.666666666666671" height="42"/>
                                     <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik" pointSize="35"/>
@@ -155,13 +159,17 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
+                                <constraint firstItem="aSO-2W-jCJ" firstAttribute="top" secondItem="Wrd-Pf-hf5" secondAttribute="top" id="32F-V6-TSI"/>
+                                <constraint firstItem="aSO-2W-jCJ" firstAttribute="leading" secondItem="Wrd-Pf-hf5" secondAttribute="leading" id="7k1-UR-5CY"/>
                                 <constraint firstItem="Wrd-Pf-hf5" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GYt-xF-Hep" secondAttribute="trailing" constant="50" id="B11-y4-lwZ"/>
                                 <constraint firstItem="mxK-jZ-K9c" firstAttribute="top" secondItem="Wrd-Pf-hf5" secondAttribute="top" id="HgT-TZ-F2b"/>
                                 <constraint firstItem="GId-Kt-O6p" firstAttribute="centerY" secondItem="otp-49-0at" secondAttribute="centerY" id="K6X-lp-Ugx"/>
+                                <constraint firstItem="aSO-2W-jCJ" firstAttribute="bottom" secondItem="Wrd-Pf-hf5" secondAttribute="bottom" id="Rns-ao-Scx"/>
                                 <constraint firstItem="GYt-xF-Hep" firstAttribute="leading" secondItem="otp-49-0at" secondAttribute="leading" id="T3c-Fn-2az"/>
                                 <constraint firstItem="mxK-jZ-K9c" firstAttribute="bottom" secondItem="Wrd-Pf-hf5" secondAttribute="bottom" id="V08-d5-f6N"/>
                                 <constraint firstItem="otp-49-0at" firstAttribute="top" secondItem="GYt-xF-Hep" secondAttribute="bottom" constant="3" id="aa4-NC-Q3g"/>
                                 <constraint firstItem="mxK-jZ-K9c" firstAttribute="trailing" secondItem="Wrd-Pf-hf5" secondAttribute="trailing" id="b1x-dA-m6F"/>
+                                <constraint firstItem="aSO-2W-jCJ" firstAttribute="trailing" secondItem="Wrd-Pf-hf5" secondAttribute="trailing" id="bPe-dO-LfU"/>
                                 <constraint firstItem="GId-Kt-O6p" firstAttribute="leading" secondItem="otp-49-0at" secondAttribute="trailing" constant="14" id="jsC-Sc-zGX"/>
                                 <constraint firstItem="otp-49-0at" firstAttribute="leading" secondItem="Wrd-Pf-hf5" secondAttribute="leading" constant="14" id="kxZ-v5-xFF"/>
                                 <constraint firstItem="mxK-jZ-K9c" firstAttribute="leading" secondItem="Wrd-Pf-hf5" secondAttribute="leading" id="l8q-s2-5Sr"/>
