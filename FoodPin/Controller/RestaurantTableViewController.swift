@@ -42,8 +42,10 @@ class RestaurantTableViewController: UITableViewController {
 
         tableView.cellLayoutMarginsFollowReadableWidth = true
         
+
         // Set to use the large title of the navigation bar
         navigationController?.navigationBar.prefersLargeTitles = true
+        
     }
 
     // MARK: - Table view data source
