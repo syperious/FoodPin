@@ -50,17 +50,26 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         headerView.heartImageView.isHidden = (restaurant.isVisited) ? false : true
         
         
-        
+        // keep navigation bar always
+        navigationController?.hidesBarsOnSwipe = false
         
     }
 
+    // MARK: - viewWillAppear override
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.hidesBarsOnSwipe = false
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     //1 body of text
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    // 3 sections of body: location, phone, description
+    // 5 sections of body: location, phone, description, separator, map
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,10 +99,32 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
 
             return cell
 
+            
+        case 3: //display separator
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailSeparatorCell.self), for: indexPath) as! RestaurantDetailSeparatorCell
+            cell.titleLabel.text = "HOW TO GET HERE"
+            cell.selectionStyle = .none
+
+            return cell
+
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailMapCell.self), for: indexPath) as! RestaurantDetailMapCell
+            cell.selectionStyle = .none
+
+            return cell
+
+            
+            
         default: //else
             fatalError("Failed to instantiate the table view cell for detail view controller")
         }
     }
+    
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     /*
     // MARK: - Navigation
 
