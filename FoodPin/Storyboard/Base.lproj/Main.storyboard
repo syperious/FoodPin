@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LxD-1s-jwv">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -137,6 +137,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="whf-ey-btW">
+                                    <rect key="frame" x="352" y="292" width="52" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="9ej-Wi-lwT"/>
+                                        <constraint firstAttribute="width" constant="52" id="c6v-xE-6hI"/>
+                                    </constraints>
+                                </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYt-xF-Hep" userLabel="Name Label">
                                     <rect key="frame" x="14" y="277.33333333333331" width="91.666666666666671" height="41.666666666666686"/>
                                     <fontDescription key="fontDescription" name="Rubik-Medium" family="Rubik" pointSize="35"/>
@@ -175,17 +182,51 @@
                                 <constraint firstItem="otp-49-0at" firstAttribute="top" secondItem="GYt-xF-Hep" secondAttribute="bottom" constant="3" id="aa4-NC-Q3g"/>
                                 <constraint firstItem="mxK-jZ-K9c" firstAttribute="trailing" secondItem="IqR-HW-lh3" secondAttribute="trailing" id="b1x-dA-m6F"/>
                                 <constraint firstItem="aSO-2W-jCJ" firstAttribute="trailing" secondItem="IqR-HW-lh3" secondAttribute="trailing" id="bPe-dO-LfU"/>
+                                <constraint firstItem="otp-49-0at" firstAttribute="bottom" secondItem="whf-ey-btW" secondAttribute="bottom" id="ceC-Ic-LOC"/>
                                 <constraint firstItem="GId-Kt-O6p" firstAttribute="leading" secondItem="otp-49-0at" secondAttribute="trailing" constant="14" id="jsC-Sc-zGX"/>
                                 <constraint firstItem="otp-49-0at" firstAttribute="leading" secondItem="IqR-HW-lh3" secondAttribute="leading" constant="14" id="kxZ-v5-xFF"/>
                                 <constraint firstItem="mxK-jZ-K9c" firstAttribute="leading" secondItem="IqR-HW-lh3" secondAttribute="leading" id="l8q-s2-5Sr"/>
+                                <constraint firstAttribute="trailing" secondItem="whf-ey-btW" secondAttribute="trailing" constant="10" id="rfi-7Q-2Lk"/>
                                 <constraint firstAttribute="bottom" secondItem="otp-49-0at" secondAttribute="bottom" constant="8" id="v7v-bh-mjF"/>
                             </constraints>
                             <connections>
                                 <outlet property="headerImageView" destination="mxK-jZ-K9c" id="NPF-JA-VTx"/>
                                 <outlet property="heartImageView" destination="GId-Kt-O6p" id="HwU-e6-76O"/>
                                 <outlet property="nameLabel" destination="GYt-xF-Hep" id="OOJ-S6-GzR"/>
+                                <outlet property="ratingImageView" destination="whf-ey-btW" id="fJh-vE-aWC"/>
                                 <outlet property="typeLabel" destination="otp-49-0at" id="u4Z-IW-8GX"/>
                             </connections>
+                        </view>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="tYp-Uv-XEW">
+                            <rect key="frame" x="0.0" y="753.33333206176758" width="414" height="90"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKI-Xn-5BM" userLabel="Rate it">
+                                    <rect key="frame" x="15" y="22" width="384" height="47"/>
+                                    <color key="backgroundColor" red="0.93547368049621582" green="0.4931519012313258" blue="0.095883346238088266" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="47" id="tKV-H7-thX"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                    <state key="normal" title="Rate it">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="25"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <segue destination="07K-fh-Wpk" kind="presentation" identifier="showReview" modalTransitionStyle="crossDissolve" id="fsU-qW-N3z"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="xKI-Xn-5BM" secondAttribute="trailing" constant="15" id="6NQ-Ox-hPV"/>
+                                <constraint firstItem="xKI-Xn-5BM" firstAttribute="leading" secondItem="tYp-Uv-XEW" secondAttribute="leading" constant="15" id="E4r-Ir-vmv"/>
+                                <constraint firstAttribute="bottom" secondItem="xKI-Xn-5BM" secondAttribute="bottom" constant="21" id="hEV-cA-oeo"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestaurantDetailIconTextCell" id="ZDB-vv-OND" customClass="RestaurantDetailIconTextCell" customModule="FoodPin" customModuleProvider="target">
@@ -327,10 +368,10 @@
             </objects>
             <point key="canvasLocation" x="1914.4927536231885" y="133.92857142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="XBN-gt-aBJ">
             <objects>
-                <viewController id="OMa-wd-0Oi" sceneMemberID="viewController">
+                <viewController id="OMa-wd-0Oi" customClass="MapViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AaQ-GZ-h6l">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -341,14 +382,17 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Q2F-2i-SDq" firstAttribute="leading" secondItem="uJA-1i-B5e" secondAttribute="leading" id="1oN-ON-saV"/>
+                            <constraint firstItem="Q2F-2i-SDq" firstAttribute="leading" secondItem="d6L-TJ-Rpp" secondAttribute="leading" id="1oN-ON-saV"/>
                             <constraint firstAttribute="bottom" secondItem="Q2F-2i-SDq" secondAttribute="bottom" id="1v1-a9-ZhZ"/>
                             <constraint firstItem="Q2F-2i-SDq" firstAttribute="top" secondItem="AaQ-GZ-h6l" secondAttribute="top" id="hRD-Wf-VxM"/>
-                            <constraint firstItem="Q2F-2i-SDq" firstAttribute="trailing" secondItem="uJA-1i-B5e" secondAttribute="trailing" id="p5f-Fx-HlW"/>
+                            <constraint firstItem="Q2F-2i-SDq" firstAttribute="trailing" secondItem="d6L-TJ-Rpp" secondAttribute="trailing" id="p5f-Fx-HlW"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="uJA-1i-B5e"/>
+                        <viewLayoutGuide key="safeArea" id="d6L-TJ-Rpp"/>
                     </view>
                     <navigationItem key="navigationItem" id="ohK-1D-3t5"/>
+                    <connections>
+                        <outlet property="mapView" destination="Q2F-2i-SDq" id="vPO-MW-Llm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="huN-Lg-DM4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -372,8 +416,109 @@
             </objects>
             <point key="canvasLocation" x="235" y="134"/>
         </scene>
+        <!--Review View Controller-->
+        <scene sceneID="3Y0-d0-C4v">
+            <objects>
+                <viewController id="07K-fh-Wpk" customClass="ReviewViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gLX-wd-2y1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WS1-zK-r8L">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Rgx-w9-iwk">
+                                <rect key="frame" x="94" y="180.66666666666663" width="226" height="481"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zmn-0U-NxV">
+                                        <rect key="frame" x="0.0" y="0.0" width="187" height="82"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Love" image="love"/>
+                                        <connections>
+                                            <segue destination="WJC-rT-vzm" kind="unwind" identifier="love" unwindAction="rateRestaurantWithSegue:" id="3Gb-GM-h42"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h85-ca-6ji">
+                                        <rect key="frame" x="0.0" y="92.000000000000028" width="183" height="83"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Cool" image="cool"/>
+                                        <connections>
+                                            <segue destination="WJC-rT-vzm" kind="unwind" identifier="cool" unwindAction="rateRestaurantWithSegue:" id="Y4v-zg-zc2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N3a-NQ-hA2">
+                                        <rect key="frame" x="0.0" y="185.00000000000003" width="226" height="85.999999999999972"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Happy" image="happy"/>
+                                        <connections>
+                                            <segue destination="WJC-rT-vzm" kind="unwind" identifier="happy" unwindAction="rateRestaurantWithSegue:" id="zQv-GX-WdU"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xzl-1b-ywf">
+                                        <rect key="frame" x="0.0" y="281" width="167" height="87"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Sad" image="sad"/>
+                                        <connections>
+                                            <segue destination="WJC-rT-vzm" kind="unwind" identifier="sad" unwindAction="rateRestaurantWithSegue:" id="ELj-YC-tKQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfO-TT-hAY">
+                                        <rect key="frame" x="0.0" y="378" width="209" height="103"/>
+                                        <fontDescription key="fontDescription" name="Rubik-Regular" family="Rubik" pointSize="50"/>
+                                        <state key="normal" title="Angry" image="angry"/>
+                                        <connections>
+                                            <segue destination="WJC-rT-vzm" kind="unwind" identifier="angry" unwindAction="rateRestaurantWithSegue:" id="Fw6-cq-PqI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hhs-BF-X5y" userLabel="xmark">
+                                <rect key="frame" x="361" y="0.0" width="33" height="32"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="cross">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
+                                </state>
+                                <connections>
+                                    <segue destination="WJC-rT-vzm" kind="unwind" unwindAction="closeWithSegue:" id="IYU-EM-MCn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Rgx-w9-iwk" firstAttribute="centerX" secondItem="IpP-O2-tzR" secondAttribute="centerX" id="GBE-U3-qeB"/>
+                            <constraint firstItem="IpP-O2-tzR" firstAttribute="trailing" secondItem="hhs-BF-X5y" secondAttribute="trailing" constant="20" id="MgY-lW-nIy"/>
+                            <constraint firstItem="WS1-zK-r8L" firstAttribute="leading" secondItem="IpP-O2-tzR" secondAttribute="leading" id="RZd-HG-Sfr"/>
+                            <constraint firstItem="WS1-zK-r8L" firstAttribute="top" secondItem="gLX-wd-2y1" secondAttribute="top" id="awc-rJ-8VX"/>
+                            <constraint firstItem="WS1-zK-r8L" firstAttribute="trailing" secondItem="IpP-O2-tzR" secondAttribute="trailing" id="hK7-vU-BEq"/>
+                            <constraint firstItem="Rgx-w9-iwk" firstAttribute="centerY" secondItem="gLX-wd-2y1" secondAttribute="centerY" id="ldJ-Ab-UAY"/>
+                            <constraint firstItem="hhs-BF-X5y" firstAttribute="top" secondItem="IpP-O2-tzR" secondAttribute="top" id="maz-ih-g3o"/>
+                            <constraint firstAttribute="bottom" secondItem="WS1-zK-r8L" secondAttribute="bottom" id="v5M-MY-W3u"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IpP-O2-tzR"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hUS-U8-y3L"/>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="WS1-zK-r8L" id="da9-Jm-v3x"/>
+                        <outletCollection property="rateButtons" destination="zmn-0U-NxV" collectionClass="NSMutableArray" id="Jr8-tD-wMW"/>
+                        <outletCollection property="rateButtons" destination="h85-ca-6ji" collectionClass="NSMutableArray" id="dzZ-eW-wv8"/>
+                        <outletCollection property="rateButtons" destination="N3a-NQ-hA2" collectionClass="NSMutableArray" id="SGC-4S-kqW"/>
+                        <outletCollection property="rateButtons" destination="xzl-1b-ywf" collectionClass="NSMutableArray" id="yWe-Ag-tqB"/>
+                        <outletCollection property="rateButtons" destination="XfO-TT-hAY" collectionClass="NSMutableArray" id="5ED-kF-wp1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Go-qZ-HJw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="WJC-rT-vzm" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2705.7971014492755" y="864.50892857142856"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="angry" width="78" height="103"/>
+        <image name="cool" width="78" height="83"/>
+        <image name="cross" width="33" height="32"/>
+        <image name="happy" width="78" height="86"/>
         <image name="heart-tick" width="22" height="21"/>
+        <image name="love" width="78" height="82"/>
+        <image name="sad" width="78" height="87"/>
     </resources>
 </document>
