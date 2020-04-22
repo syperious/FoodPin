@@ -71,6 +71,9 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         headerView.nameLabel.text = restaurant.name
         headerView.typeLabel.text = restaurant.type
         headerView.headerImageView.image = UIImage(named: restaurant.image)
+//        if let restaurantImage = restaurant.image {
+//            headerView.headerImageView.image = UIImage(data: restaurantImage as Data)
+//        }
         headerView.heartImageView.isHidden = (restaurant.isVisited) ? false : true
         
         
@@ -135,6 +138,11 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailMapCell.self), for: indexPath) as! RestaurantDetailMapCell
 //            cell.selectionStyle = .none
             cell.configure(location: restaurant.location)
+            
+//            if let restaurantLocation = restaurant.location {
+//                cell.configure(location: restaurantLocation)
+//            }
+            
             return cell
 
             

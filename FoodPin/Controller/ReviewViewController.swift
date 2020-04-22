@@ -13,6 +13,7 @@ class ReviewViewController: UIViewController {
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var rateButtons: [UIButton]!
     
+    
     var restaurant = Restaurant()
     
     override func viewDidLoad() {
