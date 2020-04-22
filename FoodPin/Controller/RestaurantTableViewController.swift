@@ -228,14 +228,20 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     // MARK: - Left Swipe Function
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
-            // Delete the row from the data source
-            self.restaurants.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            // Delete the row from the data store
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                let context = appDelegate.persistentContainer.viewContext
+                let restaurantToDelete = self.fetchResultController.object(at: indexPath)
+                context.delete(restaurantToDelete)
 
-            // Call completion handler to dismiss the action button
+                appDelegate.saveContext()
+            }
+
+            // Call completion handler with true to indicate
             completionHandler(true)
         }
-
+        
+        
         let shareAction = UIContextualAction(style: .normal, title: "Share") { (action, sourceView, completionHandler) in
             let defaultText = "Just checking in at " + self.restaurants[indexPath.row].name!
 //            let activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)

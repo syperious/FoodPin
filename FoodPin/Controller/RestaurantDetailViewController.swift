@@ -31,6 +31,11 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
                 self.restaurant.rating = rating
                 self.headerView.ratingImageView.image = UIImage(named: rating)
 
+
+                if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                    appDelegate.saveContext()
+                }
+                
                 let scaleTransform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
                 self.headerView.ratingImageView.transform = scaleTransform
                 self.headerView.ratingImageView.alpha = 0
@@ -81,6 +86,10 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         // keep navigation bar always
         navigationController?.hidesBarsOnSwipe = false
         
+        if let rating = restaurant.rating {
+            headerView.ratingImageView.image = UIImage(named: rating)
+        }
+        
     }
 
     // MARK: - viewWillAppear override
@@ -122,7 +131,8 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             
         case 2: //display the description
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: RestaurantDetailTextCell.self), for: indexPath) as! RestaurantDetailTextCell
-            cell.descriptionLabel.text = restaurant.description
+//            cell.descriptionLabel.text = restaurant.description
+            cell.descriptionLabel.text = restaurant.summary
             cell.selectionStyle = .none
 
             return cell
