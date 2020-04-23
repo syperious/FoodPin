@@ -410,5 +410,12 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         }
     }
     
-    
+    //when displaying result from search, disable left and right swipe features
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if searchController.isActive {
+            return false
+        } else {
+            return true
+        }
+    }
 }
