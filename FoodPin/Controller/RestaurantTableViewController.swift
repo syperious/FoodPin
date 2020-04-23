@@ -9,15 +9,22 @@
 import UIKit
 import CoreData
 
-class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate,UISearchResultsUpdating {
 
     
     @IBOutlet var emptyRestaurantView: UIView!
     
+    //for getting data from core data
     var fetchResultController: NSFetchedResultsController<RestaurantMO>!
     
+    //for search bar
+    var searchController: UISearchController!
+    //for storing search results
+    var searchResults: [RestaurantMO] = []
+    
+    
     var restaurants: [RestaurantMO] = []
-//    var restaurants:[Restaurant] = [
+//    var restaurants:[RestaurantMO] = [
 //        Restaurant(name: "Cafe Deadend", type: "Coffee & Tea Shop", location: "G/F, 72 Po Hing Fong, Sheung Wan, Hong Kong", phone: "232-923423", description: "Searching for great breakfast eateries and coffee? This place is for you. We open at 6:30 every morning, and close at 9 PM. We offer espresso and espresso based drink, such as capuccino, cafe latte, piccolo and many more. Come over and enjoy a great meal.", image: "cafedeadend.jpg", isVisited: false),
 //        Restaurant(name: "Homei", type: "Cafe", location: "Shop B, G/F, 22-24A Tai Ping San Street SOHO, Sheung Wan, Hong Kong", phone: "348-233423", description: "A little gem hidden at the corner of the street is nothing but fantastic! This place is warm and cozy. We open at 7 every morning except Sunday, and close at 9 PM. We offer a variety of coffee drinks and specialties including lattes, cappuccinos, teas, and more. We serve breakfast, lunch, and dinner in an airy open setting. Come over, have a coffee and enjoy a chit-chat with our baristas.", image: "homei.jpg", isVisited: false),
 //        Restaurant(name: "Teakha", type: "Tea House", location: "Shop B, 18 Tai Ping Shan Road SOHO, Sheung Wan, Hong Kong", phone: "354-243523", description: "Take a moment to stop and smell tealeaves! We are about the community, our environment, and all things created by the warmth of our hands. We open at 11 AM, and close at 7 PM. At teakha, we sell only the best single-origin teas sourced by our sister company Plantation directly from small tea plantations. The teas are then either cooked to perfection with milk in a pot or brewed.", image: "teakha.jpg", isVisited: false),
@@ -41,7 +48,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
 //        Restaurant(name: "CASK Pub and Kitchen", type: "Thai", location: "22 Charlwood Street London SW1V 2DY Pimlico", phone: "432-344050", description: "With kitchen serving gourmet burgers. We offer food every day of the week, Monday through to Sunday. Join us every Sunday from 4:30 – 7:30pm for live acoustic music!", image: "caskpubkitchen.jpg", isVisited: false)
 //    ]
 
-    // MARK: - View controller life cycle
+    // MARK: - ViewDidLoad()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,6 +95,12 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
             }
         }
         
+        //search bar
+        searchController = UISearchController(searchResultsController: nil)
+        self.navigationItem.searchController = searchController
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
         
         
     }
@@ -116,14 +129,20 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return restaurants.count
+        if searchController.isActive {
+            return searchResults.count
+        } else {
+            return restaurants.count
+        }
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "datacell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RestaurantTableViewCell
+        
+        // Determine if we get the restaurant from search result or the original array
+        let restaurant = (searchController.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
         
         // Configure the cell...
         cell.nameLabel.text = restaurants[indexPath.row].name
@@ -366,10 +385,30 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         if segue.identifier == "showRestaurantDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destinationController = segue.destination as! RestaurantDetailViewController
-                destinationController.restaurant = restaurants[indexPath.row]
+                destinationController.restaurant = (searchController.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
                 
             }
         }
     }
+    
+    // MARK: - CSearch result content filtering
+    func filterContent(for searchText: String) {
+        searchResults = restaurants.filter({ (restaurant) -> Bool in
+            if let name = restaurant.name {
+                let isMatch = name.localizedCaseInsensitiveContains(searchText)
+                return isMatch
+            }
+
+            return false
+        })
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filterContent(for: searchText)
+            tableView.reloadData()
+        }
+    }
+    
     
 }
