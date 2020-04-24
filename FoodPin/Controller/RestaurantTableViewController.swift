@@ -393,6 +393,8 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
                 destinationController.restaurant = (searchController.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
                 
             }
+            
+//            destinationController.hidesBottomBarWhenPushed = true
         }
     }
     
