@@ -10,6 +10,8 @@
 		B826F2D62452BC2F00E29BF1 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B826F2D42452BC2F00E29BF1 /* About.storyboard */; };
 		B826F2D82452BC5E00E29BF1 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B826F2D72452BC5E00E29BF1 /* Discover.storyboard */; };
 		B826F2DA2453809900E29BF1 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826F2D92453809900E29BF1 /* AboutTableViewController.swift */; };
+		B826F2DC2453A0AD00E29BF1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826F2DB2453A0AD00E29BF1 /* WebViewController.swift */; };
+		B826F2DE2453D97200E29BF1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B826F2DD2453D97200E29BF1 /* WebKit.framework */; };
 		B84BDB2E2443A32A0006330F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84BDB2D2443A32A0006330F /* AppDelegate.swift */; };
 		B84BDB302443A32A0006330F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84BDB2F2443A32A0006330F /* SceneDelegate.swift */; };
 		B84BDB352443A32A0006330F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B84BDB332443A32A0006330F /* Main.storyboard */; };
@@ -52,6 +54,8 @@
 		B826F2D52452BC2F00E29BF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = FoodPin/Storyboard/Base.lproj/About.storyboard; sourceTree = "<group>"; };
 		B826F2D72452BC5E00E29BF1 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		B826F2D92453809900E29BF1 /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		B826F2DB2453A0AD00E29BF1 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		B826F2DD2453D97200E29BF1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		B84BDB2A2443A32A0006330F /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B84BDB2D2443A32A0006330F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B84BDB2F2443A32A0006330F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B826F2DE2453D97200E29BF1 /* WebKit.framework in Frameworks */,
 				B84BDB70244805330006330F /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,6 +157,7 @@
 				B86A9E4A24527D370008CA8B /* WalkthroughPageViewController.swift */,
 				B86A9E4C2452806A0008CA8B /* WalkthroughViewController.swift */,
 				B826F2D92453809900E29BF1 /* AboutTableViewController.swift */,
+				B826F2DB2453A0AD00E29BF1 /* WebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -226,6 +232,7 @@
 		B84BDB6E244805330006330F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B826F2DD2453D97200E29BF1 /* WebKit.framework */,
 				B84BDB6F244805330006330F /* MapKit.framework */,
 			);
 			name = Frameworks;
@@ -329,6 +336,7 @@
 				B84BDB7424480EDD0006330F /* RestaurantDetailMapCell.swift in Sources */,
 				B826F2DA2453809900E29BF1 /* AboutTableViewController.swift in Sources */,
 				B84BDB46244567A10006330F /* RestaurantDetailViewController.swift in Sources */,
+				B826F2DC2453A0AD00E29BF1 /* WebViewController.swift in Sources */,
 				B86A9E49245235010008CA8B /* WalkthroughContentViewController.swift in Sources */,
 				B86A9E40244AD2340008CA8B /* RoundedTextField.swift in Sources */,
 				B86A9E4D2452806A0008CA8B /* WalkthroughViewController.swift in Sources */,
