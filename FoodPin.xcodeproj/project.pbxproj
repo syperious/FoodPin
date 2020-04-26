@@ -12,6 +12,7 @@
 		B826F2DA2453809900E29BF1 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826F2D92453809900E29BF1 /* AboutTableViewController.swift */; };
 		B826F2DC2453A0AD00E29BF1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826F2DB2453A0AD00E29BF1 /* WebViewController.swift */; };
 		B826F2DE2453D97200E29BF1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B826F2DD2453D97200E29BF1 /* WebKit.framework */; };
+		B826F2E02454100100E29BF1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B826F2DF2454100100E29BF1 /* CloudKit.framework */; };
 		B84BDB2E2443A32A0006330F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84BDB2D2443A32A0006330F /* AppDelegate.swift */; };
 		B84BDB302443A32A0006330F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84BDB2F2443A32A0006330F /* SceneDelegate.swift */; };
 		B84BDB352443A32A0006330F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B84BDB332443A32A0006330F /* Main.storyboard */; };
@@ -56,6 +57,8 @@
 		B826F2D92453809900E29BF1 /* AboutTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		B826F2DB2453A0AD00E29BF1 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		B826F2DD2453D97200E29BF1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		B826F2DF2454100100E29BF1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		B826F2E12454101800E29BF1 /* FoodPin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FoodPin.entitlements; sourceTree = "<group>"; };
 		B84BDB2A2443A32A0006330F /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B84BDB2D2443A32A0006330F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B84BDB2F2443A32A0006330F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B826F2E02454100100E29BF1 /* CloudKit.framework in Frameworks */,
 				B826F2DE2453D97200E29BF1 /* WebKit.framework in Frameworks */,
 				B84BDB70244805330006330F /* MapKit.framework in Frameworks */,
 			);
@@ -130,6 +134,7 @@
 		B84BDB2C2443A32A0006330F /* FoodPin */ = {
 			isa = PBXGroup;
 			children = (
+				B826F2E12454101800E29BF1 /* FoodPin.entitlements */,
 				B84BDB4A2445A2900006330F /* Storyboard */,
 				B84BDB4C2445A2B90006330F /* View */,
 				B84BDB4B2445A2B30006330F /* Model */,
@@ -232,6 +237,7 @@
 		B84BDB6E244805330006330F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B826F2DF2454100100E29BF1 /* CloudKit.framework */,
 				B826F2DD2453D97200E29BF1 /* WebKit.framework */,
 				B84BDB6F244805330006330F /* MapKit.framework */,
 			);
@@ -496,13 +502,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FoodPin/FoodPin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 33B22T4B99;
 				INFOPLIST_FILE = FoodPin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nimbusiots.FoodPin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.multiversecreation.FoodPin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -513,13 +521,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FoodPin/FoodPin.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 33B22T4B99;
 				INFOPLIST_FILE = FoodPin/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nimbusiots.FoodPin;
+				PRODUCT_BUNDLE_IDENTIFIER = com.multiversecreation.FoodPin;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
