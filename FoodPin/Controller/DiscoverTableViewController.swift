@@ -13,6 +13,7 @@ class DiscoverTableViewController: UITableViewController {
 
     var restaurants: [CKRecord] = []
     
+    var spinner = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +27,24 @@ class DiscoverTableViewController: UITableViewController {
         if let customFont = UIFont(name: "Rubik-Medium", size: 40.0) {
             navigationController?.navigationBar.largeTitleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor(red: 231, green: 76, blue: 60), NSAttributedString.Key.font: customFont ]
         }
+        
+        //show a spinner while data is loading
+        spinner.style = .medium
+        spinner.hidesWhenStopped = true
+        view.addSubview(spinner)
 
+        // Define layout constraints for the spinner
+        spinner.translatesAutoresizingMaskIntoConstraints = false //This tells iOS not to create any auto layout constraints for the spinner view. We will do it manually
+        NSLayoutConstraint.activate([ spinner.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150.0),
+                                      spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor)])
+
+        // Activate the spinner
+        spinner.startAnimating()
+        
+        
         fetchRecordsFromCloud()
+        
+
     }
 
     
@@ -82,6 +99,7 @@ class DiscoverTableViewController: UITableViewController {
 
             print("Successfully retrieve the data from iCloud")
             DispatchQueue.main.async {
+                self.spinner.stopAnimating() //stop the spinner and hide it
                 self.tableView.reloadData()
             }
         }
