@@ -28,6 +28,10 @@ class DiscoverTableViewController: UITableViewController {
             navigationController?.navigationBar.largeTitleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor(red: 231, green: 76, blue: 60), NSAttributedString.Key.font: customFont ]
         }
         
+        //async fetech records
+        fetchRecordsFromCloud()
+        
+        
         //show a spinner while data is loading
         spinner.style = .medium
         spinner.hidesWhenStopped = true
@@ -42,9 +46,14 @@ class DiscoverTableViewController: UITableViewController {
         spinner.startAnimating()
         
         
-        fetchRecordsFromCloud()
-        
 
+        // Pull To Refresh Control
+        refreshControl = UIRefreshControl()
+        refreshControl?.backgroundColor = UIColor.white
+        refreshControl?.tintColor = UIColor.gray
+        refreshControl?.addTarget(self, action: #selector(fetchRecordsFromCloud), for: UIControl.Event.valueChanged) //if tab is pulled down far enough, engage the refresh
+        
+        
     }
 
     
@@ -74,8 +83,12 @@ class DiscoverTableViewController: UITableViewController {
 //    }
     
     // Operational API implementation
-    func fetchRecordsFromCloud() {
+    @objc func fetchRecordsFromCloud() {
 
+        // Remove existing records before refreshing
+        restaurants.removeAll()
+        tableView.reloadData()
+        
         // Fetch data using Convenience API
         let cloudContainer = CKContainer.default()
         let publicDatabase = cloudContainer.publicCloudDatabase
@@ -102,7 +115,16 @@ class DiscoverTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.spinner.stopAnimating() //stop the spinner and hide it
                 self.tableView.reloadData()
+                //hide if needed the pull-to-refresh control
+                if let refreshControl = self.refreshControl {
+                    if refreshControl.isRefreshing {
+                        refreshControl.endRefreshing()
+                    }
+                }
             }
+            
+
+            
         }
 
         // Execute the query
