@@ -84,7 +84,8 @@ class DiscoverTableViewController: UITableViewController {
 
         // Create the query operation with the query
         let queryOperation = CKQueryOperation(query: query)
-        queryOperation.desiredKeys = ["name", "image"]
+//        queryOperation.desiredKeys = ["name", "image"]
+        queryOperation.desiredKeys = ["name"] //lazy loading the image
         queryOperation.queuePriority = .veryHigh
         queryOperation.resultsLimit = 50
         queryOperation.recordFetchedBlock = { (record) -> Void in //every record returned is append to restaurants.
@@ -125,12 +126,39 @@ class DiscoverTableViewController: UITableViewController {
         let restaurant = restaurants[indexPath.row]
         cell.textLabel?.text = restaurant.object(forKey: "name") as? String
 
-        if let image = restaurant.object(forKey: "image"), let imageAsset = image as? CKAsset {
+        // Set the default image
+        cell.imageView?.image = UIImage(named: "photo")
+        
+        
+        // Fetch Image from Cloud in background
+        let publicDatabase = CKContainer.default().publicCloudDatabase
+        let fetchRecordsImageOperation = CKFetchRecordsOperation(recordIDs: [restaurant.recordID])
+        fetchRecordsImageOperation.desiredKeys = ["image"]
+        fetchRecordsImageOperation.queuePriority = .veryHigh
 
-            if let imageData = try? Data.init(contentsOf: imageAsset.fileURL!) {
-                cell.imageView?.image = UIImage(data: imageData)
+        fetchRecordsImageOperation.perRecordCompletionBlock = { (record, recordID, error) -> Void in
+            if let error = error {
+                print("Failed to get restaurant image: \(error.localizedDescription)")
+                return
             }
-        }
+
+                if let restaurantRecord = record,
+                    let image = restaurantRecord.object(forKey: "image"),
+                    let imageAsset = image as? CKAsset {
+
+                    if let imageData = try? Data.init(contentsOf: imageAsset.fileURL!) {
+
+                        // Replace the placeholder image with the restaurant image
+                        DispatchQueue.main.async {
+                            cell.imageView?.image = UIImage(data: imageData)
+                            cell.setNeedsLayout() //ask the cell to lay out the view again
+                        }
+                    }
+                }
+            }
+
+            publicDatabase.add(fetchRecordsImageOperation)
+
 
         return cell
     }
