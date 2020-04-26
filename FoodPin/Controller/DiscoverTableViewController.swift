@@ -31,29 +31,64 @@ class DiscoverTableViewController: UITableViewController {
     }
 
     
+    // Convenience API implementation
+//    func fetchRecordsFromCloud() {
+//        // Fetch data using Convenience API
+//        let cloudContainer = CKContainer.default()
+//        let publicDatabase = cloudContainer.publicCloudDatabase
+//        let predicate = NSPredicate(value: true)
+//        let query = CKQuery(recordType: "Restaurant", predicate: predicate)
+//        publicDatabase.perform(query, inZoneWith: nil, completionHandler: {
+//            (results, error) -> Void in
+//
+//            if let error = error {
+//                print(error)
+//                return
+//            }
+//
+//            if let results = results {
+//                print("Completed the download of Restaurant data")
+//                self.restaurants = results
+//                DispatchQueue.main.async { //use async to free up the handler to run frontend refresh
+//                    self.tableView.reloadData()
+//                }
+//            }
+//        })
+//    }
     
+    // Operational API implementation
     func fetchRecordsFromCloud() {
+
         // Fetch data using Convenience API
         let cloudContainer = CKContainer.default()
         let publicDatabase = cloudContainer.publicCloudDatabase
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Restaurant", predicate: predicate)
-        publicDatabase.perform(query, inZoneWith: nil, completionHandler: {
-            (results, error) -> Void in
 
+        // Create the query operation with the query
+        let queryOperation = CKQueryOperation(query: query)
+        queryOperation.desiredKeys = ["name", "image"]
+        queryOperation.queuePriority = .veryHigh
+        queryOperation.resultsLimit = 50
+        queryOperation.recordFetchedBlock = { (record) -> Void in //every record returned is append to restaurants.
+            self.restaurants.append(record)
+        }
+        // after all records are returned , output a note and reload the table
+        queryOperation.queryCompletionBlock = { [unowned self] (cursor, error) -> Void in
             if let error = error {
-                print(error)
+                print("Failed to get data from iCloud - \(error.localizedDescription)")
                 return
             }
 
-            if let results = results {
-                print("Completed the download of Restaurant data")
-                self.restaurants = results
-                DispatchQueue.main.async { //use async to free up the handler to run frontend refresh
-                    self.tableView.reloadData()
-                }
+            print("Successfully retrieve the data from iCloud")
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
-        })
+        }
+
+        // Execute the query
+        publicDatabase.add(queryOperation)
+
     }
     
     //next 3 methods are used to display retrieved records
