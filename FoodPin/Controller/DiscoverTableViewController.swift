@@ -99,7 +99,7 @@ class DiscoverTableViewController: UITableViewController {
         // Create the query operation with the query
         let queryOperation = CKQueryOperation(query: query)
 //        queryOperation.desiredKeys = ["name", "image"]
-        queryOperation.desiredKeys = ["name"] //lazy loading the image
+        queryOperation.desiredKeys = ["name","type","location","phone","description"] //lazy loading the image
         queryOperation.queuePriority = .veryHigh
         queryOperation.resultsLimit = 50
         queryOperation.recordFetchedBlock = { (record) -> Void in //every record returned is append to restaurants.
@@ -143,21 +143,28 @@ class DiscoverTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoverCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DiscoverCell", for: indexPath) as! DiscoverTableViewCell
 
         // Configure the cell...
         let restaurant = restaurants[indexPath.row]
-        cell.textLabel?.text = restaurant.object(forKey: "name") as? String
-
+        cell.nameLabel?.text = restaurant.object(forKey: "name") as? String
+        cell.typeLabel?.text = restaurant.object(forKey: "type") as? String
+        cell.phoneLabel?.text = restaurant.object(forKey: "phone") as? String
+        cell.locationLabel?.text = restaurant.object(forKey: "location") as? String
+        cell.summaryLabel?.text = restaurant.object(forKey: "description") as? String
+//        cell.heartImageView.isHidden = true
+        print("nameLabel is \(String(describing: cell.nameLabel?.text))")
+        print("type is \(String(describing: cell.typeLabel?.text))")
+        print("locationLabel is \(String(describing: cell.locationLabel?.text))")
         // Set the default image
-        cell.imageView?.image = UIImage(named: "photo")
+        cell.thumbnailImageView?.image = UIImage(named: "photo")
         
         // Check if the image is stored in cache
         if let imageFileURL = imageCache.object(forKey: restaurant.recordID) {
             // Fetch image from cache
             print("Get image from cache")
             if let imageData = try? Data.init(contentsOf: imageFileURL as URL) {
-                cell.imageView?.image = UIImage(data: imageData)
+                cell.thumbnailImageView?.image = UIImage(data: imageData)
             }
 
         } else {
@@ -181,7 +188,7 @@ class DiscoverTableViewController: UITableViewController {
 
                         // Replace the placeholder image with the restaurant image
                         DispatchQueue.main.async {
-                            cell.imageView?.image = UIImage(data: imageData)
+                            cell.thumbnailImageView?.image = UIImage(data: imageData)
                             cell.setNeedsLayout() //ask the cell to lay out the view again
                         }
                     }

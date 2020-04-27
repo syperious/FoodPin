@@ -14,6 +14,7 @@
 		B826F2DE2453D97200E29BF1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B826F2DD2453D97200E29BF1 /* WebKit.framework */; };
 		B826F2E02454100100E29BF1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B826F2DF2454100100E29BF1 /* CloudKit.framework */; };
 		B826F2E324553F8F00E29BF1 /* DiscoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826F2E224553F8F00E29BF1 /* DiscoverTableViewController.swift */; };
+		B826F2EB24566AB300E29BF1 /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826F2EA24566AB300E29BF1 /* DiscoverTableViewCell.swift */; };
 		B84BDB2E2443A32A0006330F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84BDB2D2443A32A0006330F /* AppDelegate.swift */; };
 		B84BDB302443A32A0006330F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84BDB2F2443A32A0006330F /* SceneDelegate.swift */; };
 		B84BDB352443A32A0006330F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B84BDB332443A32A0006330F /* Main.storyboard */; };
@@ -67,6 +68,7 @@
 		B826F2E724562CF900E29BF1 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		B826F2E824562CFA00E29BF1 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		B826F2E924562CFA00E29BF1 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = FoodPin/Storyboard/de.lproj/About.strings; sourceTree = "<group>"; };
+		B826F2EA24566AB300E29BF1 /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
 		B84BDB2A2443A32A0006330F /* FoodPin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodPin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B84BDB2D2443A32A0006330F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B84BDB2F2443A32A0006330F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				B84BDB7124480D3F0006330F /* RestaurantDetailSeparatorCell.swift */,
 				B84BDB7324480EDD0006330F /* RestaurantDetailMapCell.swift */,
 				B86A9E3F244AD2340008CA8B /* RoundedTextField.swift */,
+				B826F2EA24566AB300E29BF1 /* DiscoverTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B84BDB6D244704420006330F /* UINavigationController+Ext.swift in Sources */,
+				B826F2EB24566AB300E29BF1 /* DiscoverTableViewCell.swift in Sources */,
 				B84BDB682446EA250006330F /* RestaurantDetailTextCell.swift in Sources */,
 				B86A9E4B24527D370008CA8B /* WalkthroughPageViewController.swift in Sources */,
 				B86A9E3E2448E9760008CA8B /* ReviewViewController.swift in Sources */,
@@ -453,7 +457,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -508,7 +512,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
